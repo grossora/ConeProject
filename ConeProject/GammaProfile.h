@@ -91,6 +91,9 @@ namespace larlite {
         double openingangle ; // magic number place holder for now. 
         int smoothness = 16;// would be nice if this was even... but this gives the smoothness of the edge of the polygon cone
 	double energy= -999;
+	double angle = 60;// magic number place holder for now. 
+                bool coneintpc = true;
+                double ConeLength = 100;
 	
 
 	TH2D *fFracL0;
@@ -100,10 +103,6 @@ namespace larlite {
 	TH3D *f3FracL0;
 	TH3D *f3FracL1;
 	TH3D *f3FracL2;
-
-	TH1D *dangledeg0;
-	TH1D *dangledeg1;
-	TH1D *dangledeg2;
   };
 }
 #endif
