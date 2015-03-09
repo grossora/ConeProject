@@ -24,13 +24,6 @@ bool geoconic::TPCContained(const TLorentzVector& pos  ){
 	return true;
 	}//geoconic::TPCContained
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
 //-----------------------------------------------------------------------------------------------------------
 	// Are the 3d Cone Edges Contained in the tpc?
 bool geoconic::ConeInTPC(const TLorentzVector& Pos, const TLorentzVector& dir, double Length, double OpeningAngle, int smoothness){
@@ -41,14 +34,13 @@ bool geoconic::ConeInTPC(const TLorentzVector& Pos, const TLorentzVector& dir, d
         auto x = geo->DetHalfWidth();
         auto y = geo->DetHalfHeight();
         auto z = geo->DetLength();
-		double fid = 14; // This needs to be here because we are not doing the position box properly 
+		double fid = 1; // This needs to be here because we are not doing the position box properly 
 	double xlo = 0+fid;
 	double xhi = 2*x-fid;
 	double ylo = -y+fid;
 	double yhi = y-fid;
 	double zlo = 0+fid;
 	double zhi = z-fid;
-
 	// Make the points 
                 TLorentzVector pos = Pos;
                 TVector3 Axis;
@@ -62,11 +54,9 @@ bool geoconic::ConeInTPC(const TLorentzVector& Pos, const TLorentzVector& dir, d
                 // cross these vects to get the other mut-orthoganal one
                 TVector3 bvec;
                 bvec = Axis.Cross(avec);
-
 	// If vertex point is not in tpc return false
         if(Pos.X()>xhi || Pos.X()<xlo || Pos.Y()>yhi || Pos.Y()<ylo || Pos.Z()<zlo || Pos.Z()>zhi){
         return false;}
-		
   for(double theta =0 ; theta<2*PI; theta+=PI/smoothness){
                 double paramX = Pos.X() + Length*Axis.X()/Axis.Mag() + Radius*cos(theta)*avec.X() + Radius*sin(theta)*bvec.X();
                 double paramY = Pos.Y() + Length*Axis.Y()/Axis.Mag() + Radius*cos(theta)*avec.Y() + Radius*sin(theta)*bvec.Y();
@@ -76,14 +66,6 @@ bool geoconic::ConeInTPC(const TLorentzVector& Pos, const TLorentzVector& dir, d
         	}// theta loop
 return true;
 	}// ConeInTPC
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
 
 //-----------------------------------------------------------------------------------------------------------
 	// This returns Polygon edges for the cone If you already have the cone points
@@ -119,12 +101,6 @@ std::vector<larutil::PxPoint> geoconic::ConicalEdge(std::vector<larutil::PxPoint
 	return edges;
 	}
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 //-----------------------------------------------------------------------------------------------------------
 	// This returns Polygon edges for the cone
         // List of Conical Features that make the polygon 
@@ -146,7 +122,6 @@ std::vector<larutil::PxPoint> geoconic::ConicalEdge(std::vector<larutil::PxPoint
                  std::vector<larutil::PxPoint> CFHA;
 		// Fill up the Final 2d point Collinear points List
                  std::vector<larutil::PxPoint> CFH;
-
 
 		TLorentzVector pos = Pos;
                 TVector3 Axis;
@@ -198,7 +173,6 @@ std::vector<larutil::PxPoint> geoconic::ConicalEdge(std::vector<larutil::PxPoint
 			if(goodpt){CFHA.push_back(pConeFullHits[a]);}
 			}
 			
-
 	// Check if there are collinear points... If so deal with them
 		std::vector<std::vector<unsigned int>> cofix;
 		for(unsigned int a=0; a<CFHA.size(); a++){
@@ -219,7 +193,6 @@ std::vector<larutil::PxPoint> geoconic::ConicalEdge(std::vector<larutil::PxPoint
 		moveon:;
 		}
 		
-
 	// Fill all the hits that are not collinear
 		for(unsigned int a=0; a<CFHA.size(); a++){
 			bool goodpt = true;
@@ -228,7 +201,6 @@ std::vector<larutil::PxPoint> geoconic::ConicalEdge(std::vector<larutil::PxPoint
 				}
 			if(goodpt){CFH.push_back(CFHA[a]);}
 			}
-
 			// Need to average the collinear points and put them in too 
 			for(unsigned int co=0; co<cofix.size();co++){
 			// just pick the middle one for now
@@ -277,15 +249,9 @@ std::vector<larutil::PxPoint> geoconic::ConicalEdge(std::vector<larutil::PxPoint
 		if( result[b].w==0 && result[b].t==0) break;
 		ret.push_back(result[b]);
 		}
-	//		for(unsigned int a=0; a<ret.size(); a++){
-	//	std::cout<<"Circle edge w , t 2D "<< ret[a].w<<" , "<<ret[a].t<<std::endl;
-	//			}
 	return ret;
 		}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
 
@@ -293,7 +259,6 @@ std::vector<larutil::PxPoint> geoconic::ConicalEdge(std::vector<larutil::PxPoint
 	// look to see if the cones intersect at all 
 	// if return true then that means cone intesect 
 	// if returns false then the cones do not intersect
-
 	for(unsigned int a=0 ; a<conea.size()-1;a++){
 		auto p1 = conea[a];
 		auto q1 = conea[a+1];
