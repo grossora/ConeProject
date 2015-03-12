@@ -57,18 +57,37 @@ double coneprofile::OpeningAngle(const double energy) const {
   //          \
 
   //(1/2)*opening angle = arctan(R/L)
-
-  return 2*atan(ShowerRadius()/Length(energy));
+  return 2*atan(ShowerRadius()/GammaLength(energy));
 
 }
 
 double coneprofile::ShowerRadius() const {
   //Moleiere radius in LAr is 10.1cm, according to Wikipedia
   return 10.1;
-
 }
 
 
+
+//===========================================================================
+//=================================== RG=====================================
+//===========================================================================
+
+double coneprofile::GammaLength(const double energy) const {
+  double rad_length_cm = 14.; //Assumed energy independent (roughly correct)
+  double epsilon_mev = 30.5; // from using argon
+
+  double shower_length =  log( energy/epsilon_mev )*rad_length_cm - 0.5 + (0.08*18) + 9.6*rad_length_cm;
+	// Since we do not know where the Photon will convert... we can add an extra 9/7*radLength
+  double gshower_length = shower_length+ 9.0/7.0 *rad_length_cm;
+std::cout<<"Shower of Energy: "<< energy <<" Has Length(cm of :"<<gshower_length<<std::endl;
+	return gshower_length;
+	}
+//===========================================================================
+
+//double coneprofile::Gammatmax(const double energy) const {
+  //double rad_length_cm = 14.; //Assumed energy independent (roughly correct)
+  //double epsilon_mev = 30.5; // from using argon
+  //double shower_length =  log( energy/epsilon_mev ) - 0.5 + ;
 
 }
 #endif

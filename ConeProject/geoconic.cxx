@@ -12,7 +12,8 @@ bool geoconic::TPCContained(const TLorentzVector& pos  ){
 	auto x = geo->DetHalfWidth();
 	auto y = geo->DetHalfHeight();
 	auto z = geo->DetLength();
-		double fid = 1; // This needs to be here because we are not doing the position box properly 
+		//double fid = 1; // This needs to be here because we are not doing the position box properly 
+		double fid = 14; // This needs to be here because we are not doing the position box properly 
 	double xlo = 0+fid;
 	double xhi = 2*x-fid;
 	double ylo = -y+fid;
@@ -34,7 +35,8 @@ bool geoconic::ConeInTPC(const TLorentzVector& Pos, const TLorentzVector& dir, d
         auto x = geo->DetHalfWidth();
         auto y = geo->DetHalfHeight();
         auto z = geo->DetLength();
-		double fid = 1; // This needs to be here because we are not doing the position box properly 
+		//double fid = 1; // This needs to be here because we are not doing the position box properly 
+		double fid = 14; // This needs to be here because we are not doing the position box properly 
 	double xlo = 0+fid;
 	double xhi = 2*x-fid;
 	double ylo = -y+fid;

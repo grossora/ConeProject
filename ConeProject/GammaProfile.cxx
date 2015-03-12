@@ -107,7 +107,7 @@ namespace larlite {
 		std::vector<double> ratio(nplanes);
 
 	//if(coneintpc && energy>100 && energy<205)
-	if(showerintpc && energy>100 && energy<200 )
+	if(showerintpc && energy>190 && energy<200 )
 	//asdf
 	{
 		std::vector<double> DChargeDL(nplanes,0.0);

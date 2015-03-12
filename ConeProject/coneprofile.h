@@ -57,6 +57,9 @@ namespace larlite {
   double ShowerRadius() const;
 
 
+  /// Given (energy) return shower length for extra gamma boost
+  double GammaLength(const double energy) const ;
+
 	};
 
 }

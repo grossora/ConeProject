@@ -25,24 +25,10 @@ namespace larlite {
 	//== Truth Photon Start Dir  
 		TLorentzVector ConeDir_A;
 		TLorentzVector ConeDir_B;
-//=================================================
-//$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
-//-----------Define some variables-----------------
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-//=================================================
-
-
-
-
 //=========================================
 //========== Bring in info  ===============
 //=========================================
-//        auto hits = storage->get_data<event_hit>("gaushit");
-  //      if(!hits){print(msg::kERROR,__FUNCTION__,"No DBCluster or associated hits found!");
-    //            throw std::exception();
-      //          return false;}
-//  This uses the truth info to get the cone
-		// Get this info from pi0 decay
+	// Get this info from pi0 decay
         auto mcshower = storage->get_data<event_mcshower>("mcreco");
 		if(mcshower->size()==2){ // This means we have a gamma-gamma decay
 			unsigned int showercount=0;
@@ -58,8 +44,11 @@ namespace larlite {
 					// Check if this cone is inside of the tpc. look at edges. 
 					try{
 				     	Energy_B = ShowerDetProf.E();
-					AxisLength_B = fconeprofile.Length(Energy_B);
-					OpeningAngle_B = fconeprofile.OpeningAngle(Energy_B)*180.0/PI;
+					//AxisLength_B = fconeprofile.Length(Energy_B);
+					//OpeningAngle_B = fconeprofile.OpeningAngle(Energy_B)*180.0/PI;
+					//AxisLength_B = fconeprofile.GammaLength(Energy_B);
+					AxisLength_B = 15;
+					OpeningAngle_B = 33.0;
 					coneintpc_B = fgeoconic.ConeInTPC(pos,dir,AxisLength_B,OpeningAngle_B, smoothness);
 					}catch(const ::larutil::LArUtilException& e){
 					coneintpc_B = false;
@@ -77,8 +66,11 @@ namespace larlite {
 					// Check if this cone is inside of the tpc. look at edges. 
 					try{
 				     	Energy_A = ShowerDetProf.E();
-					AxisLength_A = fconeprofile.Length(Energy_A);
-					OpeningAngle_A = fconeprofile.OpeningAngle(Energy_A)*180.0/PI;
+					//AxisLength_A = fconeprofile.Length(Energy_A);
+					//OpeningAngle_A = fconeprofile.OpeningAngle(Energy_A)*180.0/PI;
+					//AxisLength_A = fconeprofile.GammaLength(Energy_A);
+					AxisLength_A = 15;
+					OpeningAngle_A = 33.0;
 					coneintpc_A = fgeoconic.ConeInTPC(pos,dir,AxisLength_A,OpeningAngle_A, smoothness);
 					}catch(const ::larutil::LArUtilException& e){
 					coneintpc_A = false;
@@ -101,8 +93,6 @@ namespace larlite {
 //==== Look to see if there are overlap in the cones =====
 //========================================================
 		overlap = true;
-		// Definition is odd.... if return true that means that there is not overlap and cones are good
-		// if false then that means that there is overlap and don't proceed
 	if(coneintpc_A && coneintpc_B){
 		for( unsigned int a = 0 ; a<nplanes; a++)
 		{
@@ -112,7 +102,36 @@ namespace larlite {
 			if(ABOverlap) overlap = false;
 		}
 	}
-	
+
+
+
+
+
+
+//=================================================
+		// Definition is odd.... if return true that means that there is not overlap and cones are good
+		// if false then that means that there is overlap and don't proceed
+/*
+		std::vector<larutil::PxPoint> polyprojA;
+		std::vector<larutil::PxPoint> polyprojB;
+	if(coneintpc_A && coneintpc_B){
+		for( unsigned int a = 0 ; a<nplanes; a++)
+		{
+		try{
+		auto polyprojA = fgeoconic.ConicalFeatures(ConePos_A, ConeDir_A ,AxisLength_A , OpeningAngle_A, a ,smoothness);
+			}catch(const ::larutil::LArUtilException& e){
+		coneintpc_A = false;}
+		try{
+		auto polyprojB = fgeoconic.ConicalFeatures(ConePos_B, ConeDir_B ,AxisLength_B , OpeningAngle_B, a ,smoothness);
+			}catch(const ::larutil::LArUtilException& e){
+		coneintpc_B = false;}
+		if(coneintpc_A && coneintpc_B){
+		auto ABOverlap = fgeoconic.ConicalOverlap(polyprojA , polyprojB);
+			if(ABOverlap) overlap = false;
+			}	
+		}
+	}
+	*/
 //=================================================
 //$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
 //-----------:Looking for overlap  ----------------
@@ -124,10 +143,6 @@ namespace larlite {
 //==== Fill Tree for Non-Dalitz Decay ============== =====
 //========================================================
 	if(mcshower->size()==2) ConeTree->Fill();// This means a  mcshower is not a dalitz decay    
-		
-
-	
-
     return true;
   }
 
@@ -145,7 +160,7 @@ namespace larlite {
         {
         ConeTree = new TTree("ConeTree","ConeTree");
                 ConeTree->Branch("Energy_A",&Energy_A,"Energy_A/D");
-                ConeTree->Branch("Energy_B",&Energy_B,"EShower_B/D");
+                ConeTree->Branch("Energy_B",&Energy_B,"Energy_B/D");
                 ConeTree->Branch("AxisLength_A",&AxisLength_A,"AxisLength_A/D");
                 ConeTree->Branch("AxisLength_B",&AxisLength_B,"AxisLength_B/D");
                 ConeTree->Branch("OpeningAngle_A",&OpeningAngle_A,"OpeningAngle_A/D");
