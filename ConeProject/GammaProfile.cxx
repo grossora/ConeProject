@@ -13,6 +13,10 @@ namespace larlite {
         f3FracL0 = new TH3D("f3LengthA0","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM; Energy Deposit/Length",200,0,200,50,0,10000,1000,0,1000);
         f3FracL1 = new TH3D("f3LengthA1","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM;Energy Deposit/Length",200,0,200,50,0,10000,1000,0,1000);
         f3FracL2 = new TH3D("f3LengthA2","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM; Energy Deposit/Length",200,0,200,50,0,10000,1000,0,1000);
+
+
+        fmcEn = new TH1D("fmcEn","dCharge/dX ",200,0,1000);
+        fmcEnGood = new TH1D("fmcEnGood","Good Showers ",200,0,1000);
    return true;
   }
   
@@ -48,6 +52,12 @@ namespace larlite {
 		std::vector<std::vector<larutil::PxHit>> ContainedPxHitsVect(nplanes);
         //== Make the pxhit  vector by plane for now...
 		std::vector<std::vector<unsigned int>> ContainedHitsVect(nplanes);
+        //== ratio of charge contained...
+		double mctcontain = -999;
+        //== true energy...
+		double mcEn = -999;
+        //== Detector energy...
+		double DetEn = -999;
 //=================================================
 //$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
 //-----------Define some variables-----------------
@@ -80,11 +90,17 @@ namespace larlite {
                                 auto ShowerDetProf =  mcs.DetProfile();
 				StartConePos = SP.Position();
 				StartShowerPos = ShowerDetProf.Position();
+					//StartShowerPos = SP.Position();
+					//StartConePos = ShowerDetProf.Position();
 				auto pos = ShowerDetProf.Position();
 				StartConeDir = SP.Momentum();
 				StartShowerDir = ShowerDetProf.Momentum();
+					//StartShowerDir = SP.Momentum();
+					//StartConeDir = ShowerDetProf.Momentum();
 				auto dir = ShowerDetProf.Momentum();
-				energy = ShowerDetProf.E();
+				DetEn = ShowerDetProf.E();
+				mcEn = SP.E();
+				mctcontain = DetEn/mcEn;
 						}//mcshower 
 //=================================================
 //$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
@@ -107,9 +123,13 @@ namespace larlite {
 		std::vector<double> ratio(nplanes);
 
 	//if(coneintpc && energy>100 && energy<205)
-	if(showerintpc && energy>190 && energy<200 )
+	//if(showerintpc && DetEn/mcEn > 0.95 &&mcEn>200 &&mcEn<250)
+	if(showerintpc && DetEn/mcEn > 0.9 &&mcEn>200 &&mcEn<250 && StartConeDir.Pz()/StartConeDir.E()>0.9 &&StartConeDir.Px()/StartConeDir.E()<0.01)
 	//asdf
 	{
+	std::cout<<"px" <<StartConeDir.Px()/StartConeDir.E()<<std::endl;
+	std::cout<<"py" <<StartConeDir.Py()/StartConeDir.E()<<std::endl;
+	std::cout<<"pz" <<StartConeDir.Pz()/StartConeDir.E()<<std::endl;
 		std::vector<double> DChargeDL(nplanes,0.0);
 		for(unsigned int plane=0; plane<nplanes; plane++)
 		{
@@ -136,7 +156,11 @@ namespace larlite {
 				if(plane==2) f3FracL2->Fill(a,dCdX,energy);
 			}
 		}
+	fmcEnGood->Fill(mcEn);
 	}//
+	
+	//
+	fmcEn->Fill(mcEn);
 
     return true;
   }
@@ -151,6 +175,8 @@ namespace larlite {
 	f3FracL0->Write();
 	f3FracL1->Write();
 	f3FracL2->Write();
+	fmcEn->Write();
+	fmcEnGood->Write();
     return true;
   }
 

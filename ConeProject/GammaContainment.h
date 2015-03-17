@@ -84,34 +84,86 @@ namespace larlite {
         ::larlite::ctools fctools;
         ::larlite::coneprofile fconeprofile;
 
-//	double AxisLength = 200;// Setting this here... This is the length of the cone
-        //double openingangle = 50.0; // magic number place holder for now. 
-        double openingangle ; // magic number place holder for now. 
+        double angle = 60.0; // magic number place holder for now. 
+	double RadLength = 14.0;
         int smoothness = 16;// would be nice if this was even... but this gives the smoothness of the edge of the polygon cone
+	double ConeLength = 52;
 	
+	TH1D *fA30_L3_P0;
+	TH1D *fA30_L3_P1;
+	TH1D *fA30_L3_P2;
+	TH1D *fA30_L4_P0;
+	TH1D *fA30_L4_P1;
+	TH1D *fA30_L4_P2;
+	TH1D *fA30_L5_P0;
+	TH1D *fA30_L5_P1;
+	TH1D *fA30_L5_P2;
 
-	TH1D *fLength;
-	TH2D *fLengthA;
+	TH1D *fA45_L3_P0;
+	TH1D *fA45_L3_P1;
+	TH1D *fA45_L3_P2;
+	TH1D *fA45_L4_P0;
+	TH1D *fA45_L4_P1;
+	TH1D *fA45_L4_P2;
+	TH1D *fA45_L5_P0;
+	TH1D *fA45_L5_P1;
+	TH1D *fA45_L5_P2;
 
-	TH1D *C0L50;
-	TH1D *C1L50;
-	TH1D *C2L50;
+	TH1D *fA60_L3_P0;
+	TH1D *fA60_L3_P1;
+	TH1D *fA60_L3_P2;
+	TH1D *fA60_L4_P0;
+	TH1D *fA60_L4_P1;
+	TH1D *fA60_L4_P2;
+	TH1D *fA60_L5_P0;
+	TH1D *fA60_L5_P1;
+	TH1D *fA60_L5_P2;
 
-	TH1D *C0L70;
-	TH1D *C1L70;
-	TH1D *C2L70;
+	////////
+	TH2D *fA30_L3_P0E;
+	TH2D *fA30_L3_P1E;
+	TH2D *fA30_L3_P2E;
+	TH2D *fA30_L4_P0E;
+	TH2D *fA30_L4_P1E;
+	TH2D *fA30_L4_P2E;
+	TH2D *fA30_L5_P0E;
+	TH2D *fA30_L5_P1E;
+	TH2D *fA30_L5_P2E;
+	
+	TH2D *fA45_L3_P0E;
+	TH2D *fA45_L3_P1E;
+	TH2D *fA45_L3_P2E;
+	TH2D *fA45_L4_P0E;
+	TH2D *fA45_L4_P1E;
+	TH2D *fA45_L4_P2E;
+	TH2D *fA45_L5_P0E;
+	TH2D *fA45_L5_P1E;
+	TH2D *fA45_L5_P2E;
 
-	TH1D *C0L100;
-	TH1D *C1L100;
-	TH1D *C2L100;
+	TH2D *fA60_L3_P0E;
+	TH2D *fA60_L3_P1E;
+	TH2D *fA60_L3_P2E;
+	TH2D *fA60_L4_P0E;
+	TH2D *fA60_L4_P1E;
+	TH2D *fA60_L4_P2E;
+	TH2D *fA60_L5_P0E;
+	TH2D *fA60_L5_P1E;
+	TH2D *fA60_L5_P2E;
 
-	TH1D *C0L140;
-	TH1D *C1L140;
-	TH1D *C2L140;
 
-	TH1D *CTheory0;
-	TH1D *CTheory1;
-	TH1D *CTheory2;
+        void InitializeAnaTree();
+
+        TTree *FullTree;
+
+	double cp0;
+	double cp1;
+	double cp2;
+	double mcsdeposit0;
+	double mcsdeposit1;
+	double mcsdeposit2;
+	double cont0;
+	double cont1;
+	double cont2;
   };
 }
 #endif

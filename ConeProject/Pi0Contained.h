@@ -25,6 +25,8 @@
 #include "DataFormat/DataFormat-TypeDef.h"
 #include "DataFormat/mcshower.h"
 #include "DataFormat/data_base.h"
+#include "DataFormat/mctruth.h"
+
 
 #include <math.h>       /* aTan */
 #define PI 3.14159265358979323846264338327950288419
@@ -80,6 +82,15 @@ namespace larlite {
 
 	
 	void InitializeAnaTree();
+
+	double pionenergy;
+        double P_x;
+        double P_y;
+        double P_z;
+        double P_px;
+        double P_py;
+        double P_pz;
+        double P_pmag;
 
         TTree *ConeTree;
 	double Energy_A;

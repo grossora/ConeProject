@@ -7,30 +7,69 @@
 namespace larlite {
 
   bool GammaContainment::initialize() {
+	
+	InitializeAnaTree();
+	        fA30_L3_P0 = new TH1D("fA30L3P0","Good Showers ",100,0,1);
+	        fA30_L3_P1 = new TH1D("fA30L3P1","Good Showers ",100,0,1);
+	        fA30_L3_P2 = new TH1D("fA30L3P2","Good Showers ",100,0,1);
+	        fA30_L4_P0 = new TH1D("fA30L4P0","Good Showers ",100,0,1);
+	        fA30_L4_P1 = new TH1D("fA30L4P1","Good Showers ",100,0,1);
+	        fA30_L4_P2 = new TH1D("fA30L4P2","Good Showers ",100,0,1);
+	        fA30_L5_P0 = new TH1D("fA30L5P0","Good Showers ",100,0,1);
+	        fA30_L5_P1 = new TH1D("fA30L5P1","Good Showers ",100,0,1);
+	        fA30_L5_P2 = new TH1D("fA30L5P2","Good Showers ",100,0,1);
 
-        fLength = new TH1D("fLength","bsaha",100,0,200);
-        fLengthA = new TH2D("fLengthA","bsaha;Length of Shower in CM; Cone Open Angle",100,0,100,90,0,90);
+	        fA45_L3_P0 = new TH1D("fA45L3P0","Good Showers ",100,0,1);
+	        fA45_L3_P1 = new TH1D("fA45L3P1","Good Showers ",100,0,1);
+	        fA45_L3_P2 = new TH1D("fA45L3P2","Good Showers ",100,0,1);
+	        fA45_L4_P0 = new TH1D("fA45L4P0","Good Showers ",100,0,1);
+	        fA45_L4_P1 = new TH1D("fA45L4P1","Good Showers ",100,0,1);
+	        fA45_L4_P2 = new TH1D("fA45L4P2","Good Showers ",100,0,1);
+	        fA45_L5_P0 = new TH1D("fA45L5P0","Good Showers ",100,0,1);
+	        fA45_L5_P1 = new TH1D("fA45L5P1","Good Showers ",100,0,1);
+	        fA45_L5_P2 = new TH1D("fA45L5P2","Good Showers ",100,0,1);
 
+	        fA60_L3_P0 = new TH1D("fA60L3P0","Good Showers ",100,0,1);
+	        fA60_L3_P1 = new TH1D("fA60L3P1","Good Showers ",100,0,1);
+	        fA60_L3_P2 = new TH1D("fA60L3P2","Good Showers ",100,0,1);
+	        fA60_L4_P0 = new TH1D("fA60L4P0","Good Showers ",100,0,1);
+	        fA60_L4_P1 = new TH1D("fA60L4P1","Good Showers ",100,0,1);
+	        fA60_L4_P2 = new TH1D("fA60L4P2","Good Showers ",100,0,1);
+	        fA60_L5_P0 = new TH1D("fA60L5P0","Good Showers ",100,0,1);
+	        fA60_L5_P1 = new TH1D("fA60L5P1","Good Showers ",100,0,1);
+	        fA60_L5_P2 = new TH1D("fA60L5P2","Good Showers ",100,0,1);
 
-        C0L50 = new TH1D("C0L50","bsaha",100,0,1.0);
-        C1L50 = new TH1D("C1L50","bsaha",100,0,1.0);
-        C2L50 = new TH1D("C2L50","bsaha",100,0,1.0);
+		///////////////////////////////////////////////////////////
+	        fA30_L3_P0E = new TH2D("fA30L3P0E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L3_P1E = new TH2D("fA30L3P1E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L3_P2E = new TH2D("fA30L3P2E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L4_P0E = new TH2D("fA30L4P0E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L4_P1E = new TH2D("fA30L4P1E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L4_P2E = new TH2D("fA30L4P2E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L5_P0E = new TH2D("fA30L5P0E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L5_P1E = new TH2D("fA30L5P1E","Good Showers ",150,0,600,100,0,1);
+	        fA30_L5_P2E = new TH2D("fA30L5P2E","Good Showers ",150,0,600,100,0,1); 
 
-        C0L70 = new TH1D("C0L70","bsaha",100,0,1.0);
-        C1L70 = new TH1D("C1L70","bsaha",100,0,1.0);
-        C2L70 = new TH1D("C2L70","bsaha",100,0,1.0);
+	        fA45_L3_P0E = new TH2D("fA45L3P0E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L3_P1E = new TH2D("fA45L3P1E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L3_P2E = new TH2D("fA45L3P2E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L4_P0E = new TH2D("fA45L4P0E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L4_P1E = new TH2D("fA45L4P1E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L4_P2E = new TH2D("fA45L4P2E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L5_P0E = new TH2D("fA45L5P0E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L5_P1E = new TH2D("fA45L5P1E","Good Showers ",150,0,600,100,0,1);
+	        fA45_L5_P2E = new TH2D("fA45L5P2E","Good Showers ",150,0,600,100,0,1); 
 
-        C0L100 = new TH1D("C0L100","bsaha",100,0,1.0);
-        C1L100 = new TH1D("C1L100","bsaha",100,0,1.0);
-        C2L100 = new TH1D("C2L100","bsaha",100,0,1.0);
+	        fA60_L3_P0E = new TH2D("fA60L3P0E","Good Showers ",150,0,600,100,0,1);
+	        fA60_L3_P1E = new TH2D("fA60L3P1E","Good Showers ",150,0,600,100,0,1);
+	        fA60_L3_P2E = new TH2D("fA60L3P2E","Good Showers ",150,0,600,100,0,1);
+	        fA60_L4_P0E = new TH2D("fA60L4P0E","Good Showers ",150,0,600,100,0,1);
+	        fA60_L4_P1E = new TH2D("fA60L4P1E","Good Showers ",150,0,600,100,0,1);
+	        fA60_L4_P2E = new TH2D("fA60L4P2E","Good Showers ",150,0,600,100,0,1);
+	        fA60_L5_P0E = new TH2D("fA60L5P0E","Good Showers ",150,0,600,100,0,1.0);
+	        fA60_L5_P1E = new TH2D("fA60L5P1E","Good Showers ",150,0,600,100,0,1);
+	        fA60_L5_P2E = new TH2D("fA60L5P2E","Good Showers ",150,0,600,100,0,1); 
 
-        C0L140 = new TH1D("C0L140","bsaha",100,0,1.0);
-        C1L140 = new TH1D("C1L140","bsaha",100,0,1.0);
-        C2L140 = new TH1D("C2L140","bsaha",100,0,1.0);
-
-        CTheory0 = new TH1D("CTheory0","bsaha",100,0,1.0);
-        CTheory1 = new TH1D("CTheory1","bsaha",100,0,1.0);
-        CTheory2 = new TH1D("CTheory2","bsaha",100,0,1.0);
    return true;
   }
   
@@ -43,10 +82,33 @@ namespace larlite {
 	auto const& tpc_clock = tservice->TPCClock();
 	double tick_offset = tservice->TriggerOffsetTPC() * tpc_clock.Frequency();// Kazu's fix
         unsigned int nplanes = larutil::Geometry::GetME()->Nplanes();
+	
 
         // these things will be filled and used 
+	//== How much of the shower is contained in the detector
+	double mccontained = -999;
+	//==True energy 
+	double mcE = -999; 
 	//== LarLight vector of hits
 		std::vector<larlite::hit> hitsvect;
+	//== LarLight vector of charge on plane 
+		std::vector<double> chargeplane;
+
+        //== Truth Photon Start Position  
+                TLorentzVector StartConePos;
+                TLorentzVector StartShowerPos;
+        //== Truth Photon Start Dir  
+                TLorentzVector StartConeDir;
+                TLorentzVector StartShowerDir;
+	//== is the cone in tpc?
+		bool showerintpc;
+
+
+
+
+
+
+
 	//== 2D: This had the vertex point and end point in two 2d 
 		std::vector<std::pair<larutil::PxPoint,larutil::PxPoint>> AxisSEpt(nplanes);
 	//== 2D: This had the vertex point and end point in two 2d 
@@ -57,10 +119,6 @@ namespace larlite {
 		std::vector<std::vector<larutil::PxHit>> PxHitsVect(nplanes);
 	//== RecoFit Based on weights 
 		std::vector<std::pair<double,double>> recofitvec(nplanes);
-	//== Truth Photon Start Position  
-		TLorentzVector StartConePos;
-	//== Truth Photon Start Dir  
-		TLorentzVector StartConeDir;
         //== Make the pxhit  vector by plane for now... using hits
 		std::vector<std::vector<larutil::PxHit>> ContainedPxHitsVect(nplanes);
         //== Make the pxhit  vector by plane for now...
@@ -70,7 +128,6 @@ namespace larlite {
 //-----------Define some variables-----------------
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 //=================================================
-
 
 
 
@@ -98,13 +155,440 @@ namespace larlite {
 //  This uses the truth info to get the cone
         auto mcshower = storage->get_data<event_mcshower>("mcreco");
 			for(auto const& mcs : *mcshower){
+				chargeplane = mcs.Charge();
+                                auto SP = mcs.Start();
                                 auto ShowerDetProf =  mcs.DetProfile();
-				StartConePos = ShowerDetProf.Position();
-				auto pos = ShowerDetProf.Position();
-				StartConeDir = ShowerDetProf.Momentum();
-				auto dir = ShowerDetProf.Momentum();
+				mcE = SP.E();
+                                mccontained = ShowerDetProf.E()/SP.E();
+			        StartConePos = SP.Position();
+                                StartShowerPos = ShowerDetProf.Position();
+                                StartConeDir = SP.Momentum();
+                                StartShowerDir = ShowerDetProf.Momentum();
 		// Check if this cone is inside of the tpc. look at edges. 
 	}//mcshower 
+
+
+// 
+	//if(mccontained>.9 && mcE<150){ 
+	if(mccontained>.9 && mcE<500){ 
+		cp0 = 0;
+		cp1 = 0;
+		cp2 = 0;
+		 for(auto const& hit : PxHitsVect[0]) cp0+=hit.charge;
+		 for(auto const& hit : PxHitsVect[1]) cp1+=hit.charge;
+		 for(auto const& hit : PxHitsVect[2]) cp2+=hit.charge;
+	mcsdeposit0 = chargeplane[0];
+	mcsdeposit1 = chargeplane[1];
+	mcsdeposit2 = chargeplane[2];
+	
+	// Now find out how much is contained
+	
+	// Can we walk all planes?
+                try{
+                showerintpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,ConeLength,angle, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                return false;
+                showerintpc = false;
+                }
+
+	cont0 = -999;
+	cont1 = -999;
+	cont2 = -999;
+
+	if( showerintpc ) { 
+		// find out how much charge we is contained 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,ConeLength, angle, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) cont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) cont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) cont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+		
+		}
+
+	FullTree->Fill();
+
+
+	}
+
+
+
+
+
+
+//=============
+//== 3 Rad Lneghts and 30 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s30tpc = false;
+	 try{
+                s30tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,3*RadLength,30.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s30tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s30tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,3*RadLength, 30.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA30_L3_P0->Fill(scont0/cp0);
+	fA30_L3_P1->Fill(scont1/cp1);
+	fA30_L3_P2->Fill(scont2/cp2);
+	fA30_L3_P0E->Fill(mcE,scont0/cp0);
+	fA30_L3_P1E->Fill(mcE,scont1/cp1);
+	fA30_L3_P2E->Fill(mcE,scont2/cp2);
+		}// if s30tpc
+	}// if contained and energy
+//=============
+//== 4 Rad Lneghts and 30 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s30tpc = false;
+	 try{
+                s30tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,4*RadLength,30.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s30tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s30tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,4*RadLength, 30.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA30_L4_P0->Fill(scont0/cp0);
+	fA30_L4_P1->Fill(scont1/cp1);
+	fA30_L4_P2->Fill(scont2/cp2);
+	fA30_L4_P0E->Fill(mcE,scont0/cp0);
+	fA30_L4_P1E->Fill(mcE,scont1/cp1);
+	fA30_L4_P2E->Fill(mcE,scont2/cp2);
+		}// if s30tpc
+	}// if contained and energy
+
+//=============
+//== 5 Rad Lneghts and 30 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s30tpc = false;
+	 try{
+                s30tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,5*RadLength,30.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s30tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s30tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,5*RadLength, 30.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA30_L5_P0->Fill(scont0/cp0);
+	fA30_L5_P1->Fill(scont1/cp1);
+	fA30_L5_P2->Fill(scont2/cp2);
+	fA30_L5_P0E->Fill(mcE,scont0/cp0);
+	fA30_L5_P1E->Fill(mcE,scont1/cp1);
+	fA30_L5_P2E->Fill(mcE,scont2/cp2);
+		}// if s30tpc
+	}// if contained and energy
+
+//=================================================
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//=================================================
+
+//=============
+//== 3 Rad Lneghts and 45 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s45tpc = false;
+	 try{
+                s45tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,3*RadLength,45.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s45tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s45tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,3*RadLength, 45.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA45_L3_P0->Fill(scont0/cp0);
+	fA45_L3_P1->Fill(scont1/cp1);
+	fA45_L3_P2->Fill(scont2/cp2);
+	fA45_L3_P0E->Fill(mcE,scont0/cp0);
+	fA45_L3_P1E->Fill(mcE,scont1/cp1);
+	fA45_L3_P2E->Fill(mcE,scont2/cp2);
+		}// if s45tpc
+	}// if contained and energy
+//=============
+//== 4 Rad Lneghts and 45 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s45tpc = false;
+	 try{
+                s45tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,4*RadLength,45.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s45tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s45tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,4*RadLength, 45.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA45_L4_P0->Fill(scont0/cp0);
+	fA45_L4_P1->Fill(scont1/cp1);
+	fA45_L4_P2->Fill(scont2/cp2);
+        fA45_L4_P0E->Fill(mcE,scont0/cp0);
+        fA45_L4_P1E->Fill(mcE,scont1/cp1);
+        fA45_L4_P2E->Fill(mcE,scont2/cp2);
+		}// if s45tpc
+	}// if contained and energy
+
+//=============
+//== 5 Rad Lneghts and 45 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s45tpc = false;
+	 try{
+                s45tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,5*RadLength,45.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s45tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s45tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,5*RadLength, 45.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA45_L5_P0->Fill(scont0/cp0);
+	fA45_L5_P1->Fill(scont1/cp1);
+	fA45_L5_P2->Fill(scont2/cp2);
+        fA45_L5_P0E->Fill(mcE,scont0/cp0);
+        fA45_L5_P1E->Fill(mcE,scont1/cp1);
+        fA45_L5_P2E->Fill(mcE,scont2/cp2);
+
+		}// if s45tpc
+	}// if contained and energy
+
+//=================================================
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//=================================================
+
+//=============
+//== 3 Rad Lneghts and 60 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s60tpc = false;
+	 try{
+                s60tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,3*RadLength,60.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s60tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s60tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,3*RadLength, 60.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA60_L3_P0->Fill(scont0/cp0);
+	fA60_L3_P1->Fill(scont1/cp1);
+	fA60_L3_P2->Fill(scont2/cp2);
+        fA60_L3_P0E->Fill(mcE,scont0/cp0);
+        fA60_L3_P1E->Fill(mcE,scont1/cp1);
+        fA60_L3_P2E->Fill(mcE,scont2/cp2);
+		}// if s60tpc
+	}// if contained and energy
+//=============
+//== 4 Rad Lneghts and 60 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s60tpc = false;
+	 try{
+                s60tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,4*RadLength,60.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s60tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s60tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,4*RadLength, 60.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	//FIll the hists for this plane
+	fA60_L4_P0->Fill(scont0/cp0);
+	fA60_L4_P1->Fill(scont1/cp1);
+	fA60_L4_P2->Fill(scont2/cp2);
+        fA60_L4_P0E->Fill(mcE,scont0/cp0);
+        fA60_L4_P1E->Fill(mcE,scont1/cp1);
+        fA60_L4_P2E->Fill(mcE,scont2/cp2);
+		}// if s60tpc
+	}// if contained and energy
+
+//=============
+//== 5 Rad Lneghts and 60 angle
+//=============
+	// Fill out a few histograms to get a sense for things
+	if(mccontained>.9 && mcE<500){ 
+	bool s60tpc = false;
+	 try{
+                s60tpc = fgeoconic.ConeInTPC(StartShowerPos,StartShowerDir,5*RadLength,60.0, smoothness);
+                }catch(const ::larutil::LArUtilException& e){
+                s60tpc = false;
+                }
+	double scont0=0.0;
+	double scont1=0.0;
+	double scont2=0.0;
+	if( s60tpc ) { 
+		for(unsigned int plane = 0 ; plane<nplanes; plane++){	
+                        std::vector<larutil::PxHit> contp;
+                        try{
+                        auto polyproj = fgeoconic.ConicalFeatures(StartShowerPos, StartShowerDir,5*RadLength, 60.0, plane ,smoothness);
+                        contp = fgeoconic.PolyContain(PxHitsVect[plane], polyproj);
+			 if(plane==0) for(auto const& hit : contp) scont0+=hit.charge;
+			 if(plane==1) for(auto const& hit : contp) scont1+=hit.charge;
+			 if(plane==2) for(auto const& hit : contp) scont2+=hit.charge;
+                        }catch(const ::larutil::LArUtilException& e){
+                        continue;}
+		}// for loop over planes
+	//FIll the hists for this plane
+if(scont0/cp0 >=1.0) scont0--;// this is cheating ever so slightly
+if(scont1/cp1 >=1.0) scont1--;// this is cheating ever so slightly
+if(scont2/cp2 >=1.0) scont2--;// this is cheating ever so slightly
+	fA60_L5_P0->Fill(scont0/cp0);
+	fA60_L5_P1->Fill(scont1/cp1);
+	fA60_L5_P2->Fill(scont2/cp2);
+        fA60_L5_P0E->Fill(mcE,scont0/cp0);
+        fA60_L5_P1E->Fill(mcE,scont1/cp1);
+        fA60_L5_P2E->Fill(mcE,scont2/cp2);
+		}// if s60tpc
+	}// if contained and energy
+
+
+
+
+
+
+
+
+
+
 
 
 //=================================================
@@ -112,213 +596,6 @@ namespace larlite {
 //-------------Bring in info-----------------------
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 //=================================================
-
-		//============================================================================
-		//======  LETS TRY TO LOOK AT ENERGYCONTAIN  =================================
-		//== Theory Guess... Params are angle = 32.94  : Based on 1 Moliere Radius  ==
-		//== Theory Guess 2...Params are angle = 61.2  : Based on 2 Moliere Radius  ==
-		//== Theory Guess... Params are Length = 34.16cm =============================
-		//== Theory Guess... 90% or better of charge     =============================
-		//============================================================================
-
-		//double angleT = 32.94;
-		double angleT = 61.2;
-		bool coneintpcT = fgeoconic.ConeInTPC(StartConePos,StartConeDir,34.94, angleT, smoothness);
-		std::vector<double> ratioT(nplanes);
-		if(coneintpcT){
-			for( unsigned int a = 0 ; a<nplanes; a++){
-			auto polyprojT = fgeoconic.ConicalFeatures(StartConePos, StartConeDir,34.94, angleT, a ,smoothness);
-			std::vector<larutil::PxHit> contpT = fgeoconic.PolyContain(PxHitsVect[a], polyprojT);
-
-			double chargeonplane=0;
-			for(auto const h: PxHitsVect[a]) chargeonplane+=h.charge;
-
-			double chargecont=0;
-			for(auto const h: contpT) chargecont+=h.charge;
-		
-			double ratioplane = chargecont/chargeonplane;
-			ratioT[a] = ratioplane;
-			}
-		CTheory0->Fill(ratioT[0]);
-		CTheory1->Fill(ratioT[1]);
-		CTheory2->Fill(ratioT[2]);
-		}// if contained
-
-
-
-
-
-
-//=============================================================================================================================
-		//=================================================
-		//======  LETS TRY TO LOOK AT ENERGYCONTAIN  ======
-		//== Step through the lengths untill getting .95 ==
-		//=================================================
-	for(double ang=10; ang<90.0; ang+=1){
-		double angle = ang;
-		bool coneintpc = true;
-	for(double length =10.0 ; length<100; length+=1){
-		coneintpc = fgeoconic.ConeInTPC(StartConePos,StartConeDir,length,angle, smoothness);
-		std::vector<double> ratio(nplanes);
-		if(!coneintpc){ coneintpc = false; break;}
-			bool allplanes95 = true;
-			for( unsigned int a = 0 ; a<nplanes; a++){
-			auto polyproj = fgeoconic.ConicalFeatures(StartConePos, StartConeDir,length, angle, a ,smoothness);
-			std::vector<larutil::PxHit> contp = fgeoconic.PolyContain(PxHitsVect[a], polyproj);
-
-			double chargeonplane=0;
-			for(auto const h: PxHitsVect[a]) chargeonplane+=h.charge;
-
-			double chargecont=0;
-			for(auto const h: contp) chargecont+=h.charge;
-
-			double ratioplane = chargecont/chargeonplane;
-			if(ratioplane<0.90){ allplanes95 = false; break;}
-			}//loop over all the planes
-		
-			//if(allplanes95){fLength->Fill(length); break;}
-			if(allplanes95){fLengthA->Fill(length,ang); break;}
-		}// for loop over length
-
-	}//
-//=============================================================================================================================
-		
-
-		//==================================================================
-		//======  Look at profile of contained 90% Contained Showers  ======
-		//==================================================================
-
-
-
-
-		//=================================================
-		//======  LETS TRY TO LOOK AT ENERGYCONTAIN  ======
-		//=================================================
-		//double angle50 = 2*atan(fconeprofile.ShowerRadius()/50.0)*180.0/PI;
-		double angle50 = 60.0;
-		bool coneintpc50 = fgeoconic.ConeInTPC(StartConePos,StartConeDir,50.0,angle50, smoothness);
-		std::vector<double> ratio50(nplanes);
-		if(coneintpc50){
-			for( unsigned int a = 0 ; a<nplanes; a++){
-			auto polyproj50 = fgeoconic.ConicalFeatures(StartConePos, StartConeDir,50.0, angle50, a ,smoothness);
-			std::vector<larutil::PxHit> contp50 = fgeoconic.PolyContain(PxHitsVect[a], polyproj50);
-
-			double chargeonplane=0;
-			for(auto const h: PxHitsVect[a]) chargeonplane+=h.charge;
-
-			double chargecont=0;
-			for(auto const h: contp50) chargecont+=h.charge;
-		
-			double ratioplane = chargecont/chargeonplane;
-			if(ratioplane>1) { std::cout<<" Ratio " <<chargecont/chargeonplane<<std::endl;
-					   std::cout<<" PxHitsVect a  " <<PxHitsVect[a].size()<<std::endl;
-					   std::cout<<" Contain   " <<contp50.size()<<std::endl;
-						}//
-			ratio50[a] = ratioplane;
-			}
-		C0L50->Fill(ratio50[0]);
-		C1L50->Fill(ratio50[1]);
-		C2L50->Fill(ratio50[2]);
-		}// if contained
-
-
-
-		double angle70 = 60.0;
-		bool coneintpc70 = fgeoconic.ConeInTPC(StartConePos,StartConeDir,70.0,angle70, smoothness);
-		std::vector<double> ratio70(nplanes);
-		if(coneintpc70){
-			for( unsigned int a = 0 ; a<nplanes; a++){
-			auto polyproj70 = fgeoconic.ConicalFeatures(StartConePos, StartConeDir,70.0, angle70, a ,smoothness);
-			std::vector<larutil::PxHit> contp70 = fgeoconic.PolyContain(PxHitsVect[a], polyproj70);
-
-			double chargeonplane=0;
-			for(auto const h: PxHitsVect[a]) chargeonplane+=h.charge;
-
-			double chargecont=0;
-			for(auto const h: contp70) chargecont+=h.charge;
-		
-			double ratioplane = chargecont/chargeonplane;
-			if(ratioplane>1) { std::cout<<" Ratio " <<chargecont/chargeonplane<<std::endl;
-					   std::cout<<" PxHitsVect a  " <<PxHitsVect[a].size()<<std::endl;
-					   std::cout<<" Contain   " <<contp70.size()<<std::endl;
-						}//
-			ratio70[a] = ratioplane;
-			}
-		C0L70->Fill(ratio70[0]);
-		C1L70->Fill(ratio70[1]);
-		C2L70->Fill(ratio70[2]);
-		}// if contained
-
-
-
-		double angle100 = 60.0;
-		bool coneintpc100 = fgeoconic.ConeInTPC(StartConePos,StartConeDir,100.0,angle100, smoothness);
-		std::vector<double> ratio100(nplanes);
-		if(coneintpc100){
-			for( unsigned int a = 0 ; a<nplanes; a++){
-			auto polyproj100 = fgeoconic.ConicalFeatures(StartConePos, StartConeDir,100.0, angle100, a ,smoothness);
-			std::vector<larutil::PxHit> contp100 = fgeoconic.PolyContain(PxHitsVect[a], polyproj100);
-
-			double chargeonplane=0;
-			for(auto const h: PxHitsVect[a]) chargeonplane+=h.charge;
-
-			double chargecont=0;
-			for(auto const h: contp100) chargecont+=h.charge;
-		
-			double ratioplane = chargecont/chargeonplane;
-			if(ratioplane>1) { std::cout<<" Ratio " <<chargecont/chargeonplane<<std::endl;
-					   std::cout<<" PxHitsVect a  " <<PxHitsVect[a].size()<<std::endl;
-					   std::cout<<" Contain   " <<contp100.size()<<std::endl;
-						}//
-			ratio100[a] = ratioplane;
-			}
-		C0L100->Fill(ratio100[0]);
-		C1L100->Fill(ratio100[1]);
-		C2L100->Fill(ratio100[2]);
-		}// if contained
-
-
-		double angle140 = 60.0;
-		bool coneintpc140 = fgeoconic.ConeInTPC(StartConePos,StartConeDir,140.0,angle140, smoothness);
-		std::vector<double> ratio140(nplanes);
-		if(coneintpc140){
-			for( unsigned int a = 0 ; a<nplanes; a++){
-			auto polyproj140 = fgeoconic.ConicalFeatures(StartConePos, StartConeDir,140.0, angle140, a ,smoothness);
-			std::vector<larutil::PxHit> contp140 = fgeoconic.PolyContain(PxHitsVect[a], polyproj140);
-
-			double chargeonplane=0;
-			for(auto const h: PxHitsVect[a]) chargeonplane+=h.charge;
-
-			double chargecont=0;
-			for(auto const h: contp140) chargecont+=h.charge;
-		
-			double ratioplane = chargecont/chargeonplane;
-			if(ratioplane>1) { std::cout<<" Ratio " <<chargecont/chargeonplane<<std::endl;
-					   std::cout<<" PxHitsVect a  " <<PxHitsVect[a].size()<<std::endl;
-					   std::cout<<" Contain   " <<contp140.size()<<std::endl;
-						}//
-			ratio140[a] = ratioplane;
-			}
-		C0L140->Fill(ratio140[0]);
-		C1L140->Fill(ratio140[1]);
-		C2L140->Fill(ratio140[2]);
-		}// if contained
-
-
-
-
-//=================================================
-//$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
-//-------------End of 50 Contain-------------------
-//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-//=================================================
-
-
-
-
-			
-
-
     return true;
   }
 
@@ -326,36 +603,88 @@ namespace larlite {
 
 	if(_fout)
 	_fout->cd();
+	FullTree->Write();
+	fA30_L3_P0->Write();
+	fA30_L3_P1->Write();
+	fA30_L3_P2->Write();
+	fA30_L4_P0->Write();
+	fA30_L4_P1->Write();
+	fA30_L4_P2->Write();
+	fA30_L5_P0->Write();
+	fA30_L5_P1->Write();
+	fA30_L5_P2->Write();
 	////////////////
-	fLength->Write();
-	fLengthA->Write();
+	fA45_L3_P0->Write();
+	fA45_L3_P1->Write();
+	fA45_L3_P2->Write();
+	fA45_L4_P0->Write();
+	fA45_L4_P1->Write();
+	fA45_L4_P2->Write();
+	fA45_L5_P0->Write();
+	fA45_L5_P1->Write();
+	fA45_L5_P2->Write();
+	////////////////
+	fA60_L3_P0->Write();
+	fA60_L3_P1->Write();
+	fA60_L3_P2->Write();
+	fA60_L4_P0->Write();
+	fA60_L4_P1->Write();
+	fA60_L4_P2->Write();
+	fA60_L5_P0->Write();
+	fA60_L5_P1->Write();
+	fA60_L5_P2->Write();
 
-	C0L50->Write();
-	C1L50->Write();
-	C2L50->Write();
 
-	C0L70->Write();
-	C1L70->Write();
-	C2L70->Write();
 
-	C0L100->Write();
-	C1L100->Write();
-	C2L100->Write();
+		//////
+	fA30_L3_P0E->Write();
+	fA30_L3_P1E->Write();
+	fA30_L3_P2E->Write();
+	fA30_L4_P0E->Write();
+	fA30_L4_P1E->Write();
+	fA30_L4_P2E->Write();
+	fA30_L5_P0E->Write();
+	fA30_L5_P1E->Write();
+	fA30_L5_P2E->Write();
 
-	C0L140->Write();
-	C1L140->Write();
-	C2L140->Write();
+	fA45_L3_P0E->Write();
+	fA45_L3_P1E->Write();
+	fA45_L3_P2E->Write();
+	fA45_L4_P0E->Write();
+	fA45_L4_P1E->Write();
+	fA45_L4_P2E->Write();
+	fA45_L5_P0E->Write();
+	fA45_L5_P1E->Write();
+	fA45_L5_P2E->Write();
 
-	CTheory0->Write();
-	CTheory1->Write();
-	CTheory2->Write();
+
+	fA60_L3_P0E->Write();
+	fA60_L3_P1E->Write();
+	fA60_L3_P2E->Write();
+	fA60_L4_P0E->Write();
+	fA60_L4_P1E->Write();
+	fA60_L4_P2E->Write();
+	fA60_L5_P0E->Write();
+	fA60_L5_P1E->Write();
+	fA60_L5_P2E->Write();
 
     return true;
   }
 
 
-
-
+ void GammaContainment::InitializeAnaTree()
+        {
+        FullTree = new TTree("FullTree","FullTree");
+                FullTree->Branch("cp0",&cp0,"cp0/D");
+                FullTree->Branch("cp1",&cp1,"cp1/D");
+                FullTree->Branch("cp2",&cp2,"cp2/D");
+                FullTree->Branch("mcsdeposit0",&mcsdeposit0,"mcsdeposit0/D");
+                FullTree->Branch("mcsdeposit1",&mcsdeposit1,"mcsdeposit1/D");
+                FullTree->Branch("mcsdeposit2",&mcsdeposit2,"mcsdeposit2/D");
+                FullTree->Branch("cont0",&cont0,"cont0/D");
+                FullTree->Branch("cont1",&cont1,"cont1/D");
+                FullTree->Branch("cont2",&cont2,"cont2/D");
+	}
 
 
 }
