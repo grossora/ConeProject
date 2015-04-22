@@ -102,9 +102,9 @@ namespace larlite {
                         for(auto const& hit : *hits){ 
                               ::larutil::PxHit h;
                               h.t = (hit.PeakTime() + tick_offset )* geom->TimeToCm() ;
-                              h.w = hit.Wire()     * geom->WireToCm();
-                              h.charge = hit.Charge();
-                              h.peak   = hit.Charge(false);
+                              h.w = hit.WireID().Wire     * geom->WireToCm();
+                              h.charge = hit.Integral();
+                              //h.peak   = hit.Charge(false);
                               h.plane  = hit.View();
                                 if( (int)hit.View() ==0) PxHitsVect[0].push_back(h);
                                 if( (int)hit.View() ==1) PxHitsVect[1].push_back(h);
@@ -173,10 +173,10 @@ namespace larlite {
 //=========================================
 	// use NC Filter for now. as a name holder
     auto Output_cluster = storage->get_data<event_cluster>("ncfilter");
-    Output_cluster->clear_data();
-    Output_cluster->set_event_id(hits->event_id());
-    Output_cluster->set_run(hits->run());
-    Output_cluster->set_subrun(hits->subrun());
+    //Output_cluster->clear_data();
+    //Output_cluster->set_event_id(hits->event_id());
+    //Output_cluster->set_run(hits->run());
+    //Output_cluster->set_subrun(hits->subrun());
 
 //=================================================
 //$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
@@ -323,7 +323,7 @@ namespace larlite {
 
 		}// if cone in tpc
 
-    Output_cluster->set_association(hits->id(),hit_ass_set);
+    //Output_cluster->set_association(hits->id(),hit_ass_set);
 
 
     return true;

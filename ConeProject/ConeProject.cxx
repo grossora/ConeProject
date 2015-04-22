@@ -11,10 +11,6 @@ namespace larlite {
 
 	// Initialize tree and hists 
         InitializeAnaTree();
-
-        //cratio0 = new TH2D("cratio0","Ratio of Contained Charge / Total ; Length of Shower Axis; Charge: Contained/Deposit ",100,0,AxisLength,100,0,1);
-        //cratio1 = new TH2D("cratio1","Ratio of Contained Charge / Total ; Length of Shower Axis; Charge: Contained/Deposit",100,0,AxisLength,100,0,1);
-        //cratio2 = new TH2D("cratio2","Ratio of Contained Charge / Total ; Length of Shower Axis; Charge: Contained/Deposit",100,0,AxisLength,100,0,1);
         cratio0 = new TH2D("cratio0","Ratio of Contained Charge / Total ; Length of Shower Axis; Charge: Contained/Deposit ",200,0,150,200,0,1);
         cratio1 = new TH2D("cratio1","Ratio of Contained Charge / Total ; Length of Shower Axis; Charge: Contained/Deposit",200,0,150,200,0,1);
         cratio2 = new TH2D("cratio2","Ratio of Contained Charge / Total ; Length of Shower Axis; Charge: Contained/Deposit",200,0,150,200,0,1);
@@ -86,9 +82,8 @@ namespace larlite {
                         for(auto const& hit : *hits){ 
                               ::larutil::PxHit h;
                               h.t = (hit.PeakTime() + tick_offset )* geom->TimeToCm() ;
-                              h.w = hit.Wire()     * geom->WireToCm();
-                              h.charge = hit.Charge();
-                              h.peak   = hit.Charge(false);
+                              h.w = hit.WireID().Wire     * geom->WireToCm();
+                              h.charge = hit.Integral();
                               h.plane  = hit.View();
                                 if( (int)hit.View() ==0) PxHitsVect[0].push_back(h);
                                 if( (int)hit.View() ==1) PxHitsVect[1].push_back(h);
@@ -137,11 +132,12 @@ namespace larlite {
 //========== Define the output  ===========
 //=========================================
     //auto Output_cluster = storage->get_data<event_cluster>("ncfilter");
-    auto Output_cluster = storage->get_data<event_cluster>("ShowerCone");
-    Output_cluster->clear_data();
-    Output_cluster->set_event_id(hits->event_id());
-    Output_cluster->set_run(hits->run());
-    Output_cluster->set_subrun(hits->subrun());
+    //auto Output_cluster = storage->get_data<event_cluster>("ShowerCone");
+    //Output_cluster->clear_data();
+    //Output_cluster->set_event_id(hits->event_id());
+    //Output_cluster->set_id();
+    //Output_cluster->set_run(hits->run());
+    //Output_cluster->set_subrun(hits->subrun());
 //=================================================
 //$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
 //-----------Define The Output  -------------------

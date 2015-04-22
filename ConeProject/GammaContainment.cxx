@@ -144,9 +144,9 @@ namespace larlite {
                         for(auto const& hit : *hits){ 
                               ::larutil::PxHit h;
                               h.t = (hit.PeakTime() + tick_offset )* geom->TimeToCm() ;
-                              h.w = hit.Wire()     * geom->WireToCm();
-                              h.charge = hit.Charge();
-                              h.peak   = hit.Charge(false);
+                              h.w = hit.WireID().Wire    * geom->WireToCm();
+                              h.charge = hit.Integral();
+                              //h.peak   = hit.Charge(false);
                               h.plane  = hit.View();
                                 if( (int)hit.View() ==0) PxHitsVect[0].push_back(h);
                                 if( (int)hit.View() ==1) PxHitsVect[1].push_back(h);

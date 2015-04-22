@@ -75,9 +75,9 @@ namespace larlite {
                         for(auto const& hit : *hits){ 
                               ::larutil::PxHit h;
                               h.t = (hit.PeakTime() + tick_offset )* geom->TimeToCm() ;
-                              h.w = hit.Wire()     * geom->WireToCm();
-                              h.charge = hit.Charge();
-                              h.peak   = hit.Charge(false);
+                              h.w = hit.WireID().Wire    * geom->WireToCm();
+                              h.charge = hit.Integral();
+                              //h.peak   = hit.Charge(false);
                               h.plane  = hit.View();
                                 if( (int)hit.View() ==0) PxHitsVect[0].push_back(h);
                                 if( (int)hit.View() ==1) PxHitsVect[1].push_back(h);
@@ -101,6 +101,7 @@ namespace larlite {
 				DetEn = ShowerDetProf.E();
 				mcEn = SP.E();
 				mctcontain = DetEn/mcEn;
+				std::cout<<"mccont value"<< mctcontain<<std::endl;
 						}//mcshower 
 //=================================================
 //$$$$$$$$$$$$$$$$$---END---$$$$$$$$$$$$$$$$$$$$$$$
@@ -122,9 +123,9 @@ namespace larlite {
                 }
 		std::vector<double> ratio(nplanes);
 
-	//if(coneintpc && energy>100 && energy<205)
+	if(coneintpc)
 	//if(showerintpc && DetEn/mcEn > 0.95 &&mcEn>200 &&mcEn<250)
-	if(showerintpc && DetEn/mcEn > 0.9 &&mcEn>200 &&mcEn<250 && StartConeDir.Pz()/StartConeDir.E()>0.9 &&StartConeDir.Px()/StartConeDir.E()<0.01)
+//	if(showerintpc && DetEn/mcEn > 0.9 &&mcEn>200 &&mcEn<250 && StartConeDir.Pz()/StartConeDir.E()>0.9 &&StartConeDir.Px()/StartConeDir.E()<0.01)
 	//asdf
 	{
 	std::cout<<"px" <<StartConeDir.Px()/StartConeDir.E()<<std::endl;

@@ -349,11 +349,11 @@ return rethits;
 		//if plane 
 			if(hits[a].View()==plane){
 	larutil::PxPoint extreme;
-	extreme.w=  (hits[a].Wire()*geom->WireToCm() )+InfAdd;// are these in cm 
+	extreme.w=  (hits[a].WireID().Wire*geom->WireToCm() )+InfAdd;// are these in cm 
 	extreme.t=  (hits[a].PeakTime() + tick_offset )* geom->TimeToCm();
 	larutil::PxPoint currenthit;
 	currenthit.t = (hits[a].PeakTime() + tick_offset )* geom->TimeToCm()  ; // are these in cm 
-	currenthit.w = hits[a].Wire()*geom->WireToCm() ;// are these in cm 
+	currenthit.w = hits[a].WireID().Wire*geom->WireToCm() ;// are these in cm 
 	// Count intersections of the above line with sides of polygon
 	int count = 0, i = 0;
 	int n = polygon.size();
