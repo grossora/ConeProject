@@ -89,10 +89,10 @@ namespace larlite {
 //	double AxisLength = 200;// Setting this here... This is the length of the cone
         //double openingangle = 50.0; // magic number place holder for now. 
         double openingangle ; // magic number place holder for now. 
-        int smoothness = 16;// would be nice if this was even... but this gives the smoothness of the edge of the polygon cone
+        int smoothness = 32;// would be nice if this was even... but this gives the smoothness of the edge of the polygon cone
 	double energy= -999;
 	//double angle = 60;// magic number place holder for now. 
-	double angle = 90;// magic number place holder for now. 
+	double angle = 170;// magic number place holder for now. 
                 bool coneintpc = true;
                 double ConeLength = 6*14;
 	

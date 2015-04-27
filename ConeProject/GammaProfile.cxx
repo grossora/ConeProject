@@ -7,8 +7,8 @@
 namespace larlite {
 
   bool GammaProfile::initialize() {
-        fFracL0 = new TH2D("fLengthA0","dCharge/dX :DeDx ShowerProfile ;Length of Shower in CM; Energy Deposit/Length ",200,0,200,200,0,3000);
-        fFracL1 = new TH2D("fLengthA1","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM; Energy Deposit/Length",200,0,200,200,0,3000);
+        fFracL0 = new TH2D("fLengthA0","dCharge/dX :DeDx ShowerProfile ;Length of Shower in CM; Energy Deposit/Length ",200,0,200,200,0,5000);
+        fFracL1 = new TH2D("fLengthA1","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM; Energy Deposit/Length",200,0,200,200,0,5000);
         fFracL2 = new TH2D("fLengthA2","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM; Energy Deposit/Length",200,0,200,200,0,3000);
         f3FracL0 = new TH3D("f3LengthA0","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM; Energy Deposit/Length",200,0,200,50,0,10000,1000,0,1000);
         f3FracL1 = new TH3D("f3LengthA1","dCharge/dx :DeDx ShowerProfile;Length of Shower in CM;Energy Deposit/Length",200,0,200,50,0,10000,1000,0,1000);
@@ -76,6 +76,7 @@ namespace larlite {
                               ::larutil::PxHit h;
                               h.t = (hit.PeakTime() + tick_offset )* geom->TimeToCm() ;
                               h.w = hit.WireID().Wire    * geom->WireToCm();
+				std::cout<<"Plane, Wire, Time :  "<< hit.View() <<" , " <<hit.WireID().Wire * geom->WireToCm()<< " , " << hit.PeakTime()+tick_offset<<std::endl;
                               h.charge = hit.Integral();
                               //h.peak   = hit.Charge(false);
                               h.plane  = hit.View();
@@ -89,12 +90,14 @@ namespace larlite {
 				auto SP = mcs.Start();
                                 auto ShowerDetProf =  mcs.DetProfile();
 				StartConePos = SP.Position();
+				//StartShowerPos = SP.Position();
 				StartShowerPos = ShowerDetProf.Position();
 					//StartShowerPos = SP.Position();
 					//StartConePos = ShowerDetProf.Position();
 				auto pos = ShowerDetProf.Position();
 				StartConeDir = SP.Momentum();
-				StartShowerDir = ShowerDetProf.Momentum();
+				StartShowerDir = SP.Momentum();
+				//StartShowerDir = ShowerDetProf.Momentum();
 					//StartShowerDir = SP.Momentum();
 					//StartConeDir = ShowerDetProf.Momentum();
 				auto dir = ShowerDetProf.Momentum();
